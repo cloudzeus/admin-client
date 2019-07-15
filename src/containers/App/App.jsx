@@ -9,7 +9,7 @@ import ScrollToTop from './ScrollToTop';
 import jwtDecode from 'jwt-decode'
 import { USER_LOGIN } from '../../redux/actions/auth'
 
-if(localStorage.token !== 'undefined' && localStorage.token.length > 0 ){
+if(typeof(localStorage.token )!== 'undefined' && localStorage.token.length > 0 ){
     const token = jwtDecode(localStorage.token);
     if(token){
       store.dispatch({
