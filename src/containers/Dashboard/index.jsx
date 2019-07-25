@@ -38,24 +38,52 @@ class Dashboard extends Component {
           </Col>
         </Row>
         <Row>
-          <Col md={3} className="px-0" >
+          <Col md={6} lg={3}  className="px-0" >
             <DashCard 
             title={`$ ${totalProfit.toString()}`} 
-            classNames={{title:'danger'}} subhead="total profit earned" />
+            classNames={{title:'danger'}} subhead="total profit earned">
+              <div className="progress">
+                  <div className="progress-bar bg-danger"
+                   role="progressbar" aria-valuenow="60" aria-valuemin="0" 
+                   aria-valuemax="100" style={{width: "60%"}}>
+                  </div>
+              </div>
+            </DashCard>
           </Col>
-          <Col md={3} className="px-0" >
+          <Col md={6} lg={3} className="px-0" >
             <DashCard 
             title={`$ ${totalBookings.toString()}`} 
-            classNames={{title:'success'}} subhead="total bookings" />
+            classNames={{title:'success'}} subhead="total bookings">
+              <div className="progress">
+                  <div className="progress-bar bg-success"
+                   role="progressbar" aria-valuenow="80" aria-valuemin="0" 
+                   aria-valuemax="100" style={{width: "80%"}}>
+                  </div>
+              </div>
+            </DashCard>
           </Col>
-          <Col md={3} className="px-0" >
+          <Col md={6} lg={3} className="px-0" >
             <DashCard 
             title={`$ ${totalCustomers.toString()}`}
-           classNames={{title:'primary'}}  subhead="total customers"/>
+           classNames={{title:'primary'}}  subhead="total customers">
+              <div className="progress">
+                  <div className="progress-bar bg-primary"
+                   role="progressbar" aria-valuenow="70" aria-valuemin="0" 
+                   aria-valuemax="100" style={{width: "70%"}}>
+                  </div>
+              </div>
+           </DashCard>
           </Col>
-          <Col md={3} className="px-0" >
+          <Col md={6} lg={3} className="px-0" >
             <DashCard  title={`$ ${totalDeposit.toString()}`} 
-            classNames={{title:'warning'}} subhead="total deposit" />
+            classNames={{title:'warning'}} subhead="total deposit" >
+              <div className="progress">
+                  <div className="progress-bar bg-warning"
+                   role="progressbar" aria-valuenow="60" aria-valuemin="0" 
+                   aria-valuemax="100" style={{width: "60%"}}>
+                  </div>
+              </div>              
+            </DashCard>
           </Col>
         </Row>
         <Row>

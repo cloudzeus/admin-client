@@ -1,4 +1,4 @@
-import { GET_STATS,GET_TODAY_PICKUPS  } from '../actions/overview'
+import { GET_STATS,GET_TODAY_PICKUPS, GET_CURRENT_BOOKING,SET_NULL_CURRENT_BOOKING  } from '../actions/overview'
 
 
 
@@ -10,7 +10,8 @@ const initialState = {
         totalDeposit : 785
 
     },
-    todayPickups : null
+    todayPickups : null,
+    currentBooking : null
 }
 
 export default (state = initialState, action) => {
@@ -19,6 +20,10 @@ export default (state = initialState, action) => {
             return {...state,stats:action.payload}
         case GET_TODAY_PICKUPS:
             return {...state,todayPickups:action.payload}
+        case GET_CURRENT_BOOKING:
+            return {...state,currentBooking:action.payload}
+        case SET_NULL_CURRENT_BOOKING:
+            return {...state,currentBooking:action.payload}            
         default:
             return state;
     }

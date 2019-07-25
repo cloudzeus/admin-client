@@ -1,6 +1,8 @@
 import React from 'react';
 import { Card, CardBody, Col } from 'reactstrap';
 import PropTypes from 'prop-types'
+
+
 const DashCard = props => (
   <Col md={12}>
     <Card>
