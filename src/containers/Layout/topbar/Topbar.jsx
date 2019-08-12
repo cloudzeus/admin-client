@@ -1,5 +1,5 @@
-import React, { PureComponent } from 'react';
-import { Link } from 'react-router-dom';
+import React, {PureComponent} from 'react';
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import TopbarSidebarButton from './TopbarSidebarButton';
 import TopbarProfile from './TopbarProfile';
@@ -10,8 +10,8 @@ class Topbar extends PureComponent {
     changeSidebarVisibility: PropTypes.func.isRequired,
   };
 
-  render() {
-    const { changeMobileSidebarVisibility, changeSidebarVisibility } = this.props;
+  render () {
+    const {changeMobileSidebarVisibility, changeSidebarVisibility} = this.props;
 
     return (
       <div className="topbar">

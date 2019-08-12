@@ -1,42 +1,72 @@
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 import DownIcon from 'mdi-react/ChevronDownIcon';
-import { Collapse } from 'reactstrap';
+import {Collapse} from 'reactstrap';
 import TopbarMenuLink from './TopbarMenuLink';
-
-const Ava = `${process.env.PUBLIC_URL}/img/ava.png`;
-
-export default class TopbarProfile extends PureComponent {
-  constructor() {
-    super();
+import {connect} from 'react-redux';
+import PersonIcon from 'mdi-react/PersonIcon';
+import {bindActionCreators} from 'redux';
+import Auth from '../../../services/AuthStore';
+import {userLogout} from '../../../redux/actions/auth';
+class TopbarProfile extends PureComponent {
+  constructor () {
+    super ();
     this.state = {
       collapse: false,
     };
   }
 
   toggle = () => {
-    this.setState(prevState => ({ collapse: !prevState.collapse }));
+    this.setState (prevState => ({collapse: !prevState.collapse}));
+  };
+  logOutUser = () => {
+    Auth.removeToken ();
+    this.props.userLogout ();
   };
 
-  render() {
-    const { collapse } = this.state;
+  render () {
+    const {collapse} = this.state;
 
     return (
       <div className="topbar__profile">
         <button type="button" className="topbar__avatar" onClick={this.toggle}>
-          <img className="topbar__avatar-img" src={Ava} alt="avatar" />
-          <p className="topbar__avatar-name">Roman Johanson</p>
+          <PersonIcon />
+          <p className="topbar__avatar-name">
+            {this.props.user && this.props.user.firstName}
+          </p>
           <DownIcon className="topbar__icon" />
         </button>
-        {collapse && <button type="button" className="topbar__back" onClick={this.toggle} />}
+        {collapse &&
+          <button
+            type="button"
+            className="topbar__back"
+            onClick={this.toggle}
+          />}
         <Collapse isOpen={collapse} className="topbar__menu-wrap">
           <div className="topbar__menu">
-            <TopbarMenuLink title="Page one" icon="list" path="/pages/one" />
-            <TopbarMenuLink title="Page two" icon="inbox" path="/pages/two" />
-            <div className="topbar__menu-divider" />
-            <TopbarMenuLink title="Log Out" icon="exit" path="/" />
+            <div>
+              <button
+                className="btn btn-secondary px-5 ml-4"
+                onClick={this.logOutUser}
+              >
+                Log Out
+              </button>
+            </div>
           </div>
         </Collapse>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  user: state.auth.user,
+});
+const mapDispatchToProps = dispatch =>
+  bindActionCreators (
+    {
+      userLogout,
+    },
+    dispatch
+  );
+
+export default connect (mapStateToProps, mapDispatchToProps) (TopbarProfile);

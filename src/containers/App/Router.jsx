@@ -1,18 +1,23 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import Layout from '../Layout/index';
 import MainWrapper from './MainWrapper';
 
+import requireAuth from '../../hoc/requireAuth';
+
 import LogIn from '../LogIn/index';
-import ExamplePageOne from '../Example/index';
-import ExamplePageTwo from '../ExampleTwo/index';
+import Customers from '../Customers';
 import Dashboard from '../Dashboard';
+import CustomerDetails from '../Customers/CustomerDetails';
 
 const Pages = () => (
   <Switch>
-    <Route path="/one" component={ExamplePageOne} />
-    <Route path="/two" component={ExamplePageTwo} />
-    <Route path="/dashboard" component={Dashboard} />
+    <Route path="/customers" component={requireAuth (Customers)} />
+    <Route path="/dashboard" component={requireAuth (Dashboard)} />
+    <Route
+      path="/customer-details/:id"
+      component={requireAuth (CustomerDetails)}
+    />
   </Switch>
 );
 

@@ -4,7 +4,7 @@ $themes: (
     colorBackgroundBody: #f2f4f7,
     colorText: #646777,
     colorTextAdditional: #646777,
-    logoImg: url(../shared/img/logo/logo_light.svg),
+    logoImg: url(../shared/img/logo-img.svg),
     colorHover: #fafbfe,
     colorBorder: #eff1f5,
     colorIcon: #dddddd,
@@ -12,7 +12,7 @@ $themes: (
     colorFieldsBorder: #f2f4f7,
     colorBubble: rgba(242, 244, 247, 0.65),
     colorBubbleActive: rgba(234, 238, 255, 0.6),
-    colorScrollbar: #B4BFD0,
+    colorScrollbar: #b4bfd0,
     colorFitness: #646777,
   ),
   dark: (
@@ -29,8 +29,8 @@ $themes: (
     colorBubble: rgba(68, 79, 97, 0.65),
     colorBubbleActive: rgba(92, 104, 156, 0.6),
     colorScrollbar: #606071,
-    colorFitness: #ffffff
-  )
+    colorFitness: #ffffff,
+  ),
 );
 
 @mixin themify($themes) {
@@ -39,7 +39,12 @@ $themes: (
       $theme-map: () !global;
       @each $key, $submap in $map {
         $value: map-get(map-get($themes, $theme), '#{$key}');
-        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value,
+          )
+        ) !global;
       }
       @content;
       $theme-map: null !global;
