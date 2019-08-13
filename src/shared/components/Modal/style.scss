@@ -1,0 +1,40 @@
+.custom-modal-container {
+  position: fixed;
+  display: none;
+  overflow: auto;
+  left: 0;
+  top: 0;
+  z-index: 500;
+  justify-content: center;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  .custom-modal-content {
+    width: 60%;
+    margin: 100px auto;
+    margin-top: 20px;
+  }
+  .modal-body {
+    width: 60%;
+    margin: 100px auto;
+  }
+}
+
+.show-modal {
+  display: flex;
+}
+.cancel-btn {
+  font-size: 1.5em;
+  padding: 10px;
+  border: solid white 1px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cancel-btn:hover {
+  cursor: pointer;
+  color: #fff;
+  background: rgba(160, 157, 157, 0.5);
+}
